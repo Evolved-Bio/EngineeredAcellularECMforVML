@@ -1,4 +1,4 @@
-#Muscle-Specific ECM Fibers Made with Anchored Cell Sheet Engineering Support Tissue Regeneration in Rat Models of Volumetric Muscle Loss
+**Muscle-Specific ECM Fibers Made with Anchored Cell Sheet Engineering Support Tissue Regeneration in Rat Models of Volumetric Muscle Loss**
 
 **Overview:**
 This computational pipeline was developed to analyze tissue regeneration in volumetric muscle loss (VML) treatment studies. It enables systematic quantification of tissue components and regenerative markers through automated image processing of histological and immunohistochemical slides. The pipeline supports objective assessment of spatial tissue heterogeneity, allowing researchers to track the progression of muscle regeneration, inflammatory responses, and tissue remodeling over time. By providing standardized analysis of tissue architecture and marker expression, this tool helps evaluate the efficacy of different therapeutic approaches in skeletal muscle regeneration.
