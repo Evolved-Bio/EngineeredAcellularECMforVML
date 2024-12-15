@@ -11,6 +11,9 @@ Quantification of observations in WSIs and defining Target Prevalence Index (TPI
 Complex statistical analysis such as mixed-effects modeling
 Comprehensive data visualization and reporting
 
+**Content:**
+<ins>Step 1:</ins> SVG files analyzed using QuPath are used as inputs. These files contain three layers including Original image, a contour line defining regions of interest (ROIs) comprising only the actively remodeling injury/treatment site, and grid lines. The code detects the three layers from each SVG file and saves them individually as high-resolution (300 dpi) PNG files. 
+<ins>Step 2:</ins> The code isolates each ROI from the entire slide using binary masks created from the ROI contour line, excluding surrounding regions. The masked regions are then subdivided into analysis tiles using the reference grid lines detected through adaptive thresholding and Hough transform techniques. Each tile maintains experimental traceability through a comprehensive naming convention incorporating treatment condition (Test, Sham, or Control), time point (Week 2, 4, or 8), staining type, and animal number. Empty tiles are excluded from analysis.
 
 **Dependencies:** Google Colab environment, multiple Python libraries
 
