@@ -1,4 +1,4 @@
-# **Step 1:** Loading high quality png files in the environment
+# **Step 1:** Loading and processing SVG files in the environment
 
 
 !pip install cairosvg
@@ -23,7 +23,6 @@ import multiprocessing
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# All other functions remain exactly the same until process_svg_file
 def authenticate_drive():
     """Authenticate and create Drive API service."""
     try:
@@ -51,7 +50,6 @@ def get_files_from_folder(folder_info):
     """Get SVG files from the specified folder."""
     folder_path = folder_info['path']
     svg_files = []
-    # Use list comprehension for faster file collection
     svg_files = [
         {'name': f, 'path': os.path.join(folder_path, f)}
         for f in os.listdir(folder_path)
@@ -366,10 +364,8 @@ if __name__ == "__main__":
 
 
 
-"""# **Step 2:** Prosessing images using ROI and Grid lines
+"""# **Step 2:** Prosessing images using ROI and Grid lines"""
 
-Deleting anything outside ROI
-"""
 
 import cv2
 import numpy as np
@@ -654,7 +650,6 @@ def process_all_images_from_metadata(drive_folder_path):
         gc.collect()
 
 def main():
-    """Main function to run the image processing."""
     try:
         # Mount Google Drive
         try:
@@ -691,6 +686,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 """Tiling ROIs using Grid lines"""
 
@@ -1305,10 +1301,8 @@ if __name__ == "__main__":
 
 
 
-"""# **Step 3:** Staining dependent color segmentation
+"""# **Step 3:** Staining dependent color segmentation"""
 
-Staining is detected and major colors are predefined, cluster center is defined and then refined by going over all of the pixels
-"""
 
 import numpy as np
 import pandas as pd
@@ -1431,7 +1425,7 @@ def define_distinctive_color_groups():
 
 def get_color_group(stain):
     predefined_groups = define_predefined_color_groups()
-    ihc_stains = ['Laminin', 'Collagen', 'CD31', 'CD68', 'FSP1', 'Desmin']
+    ihc_stains = ['CD31', 'CD68', 'FSP1', 'Desmin', 'Laminin', 'Collagen']
 
     if stain in predefined_groups:
         return predefined_groups[stain]
@@ -1679,7 +1673,6 @@ def process_tiles_for_staining(metadata_df, stain, color_groups, base_path):
     return metadata_df, tile_df
 
 def main():
-    """Main execution function."""
     # Mount Google Drive if not already mounted
     try:
         drive.mount('/content/drive')
@@ -1778,6 +1771,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 """Quantification using individual tile values and mixed effect model"""
 
@@ -2417,7 +2411,6 @@ def create_area_plots(metadata_df, output_dir):
 
 
 def main():
-    """Main execution function with Google Drive support."""
     # Skip mounting if already mounted
     try:
         drive.mount('/content/drive')
@@ -2494,10 +2487,8 @@ if __name__ == "__main__":
 
 
 
-"""# **Step 4:** Indices definition and visualization
+"""# **Step 4:** Indices definition and visualization"""
 
-Regression-based Normalization using Slide level data
-"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -3169,7 +3160,6 @@ def perform_weighted_tpi_statistical_analysis(tpi_df, marker_data, target_col, m
     return results
 
 def main():
-    """Main execution function with Google Drive support."""
     # Skip mounting if already mounted
     try:
         drive.mount('/content/drive')
